@@ -1,0 +1,11 @@
+../Core/Src/Bootloader.c:27:11:BL_UART_Fetch_Host_Command	10
+../Core/Src/Bootloader.c:89:6:BL_Print_Message	1
+../Core/Src/Bootloader.c:111:13:Bootloader_Jump_To_Address	2
+../Core/Src/Bootloader.c:149:16:Perform_Flash_Erase	7
+../Core/Src/Bootloader.c:208:13:Bootloader_Erase_Flash	2
+../Core/Src/Bootloader.c:235:16:Flash_Memory_Write_Payload	7
+../Core/Src/Bootloader.c:287:13:Bootloader_Memory_Write	3
+../Core/Src/Bootloader.c:337:16:Bootloader_CRC_Verify	3
+../Core/Src/Bootloader.c:360:13:Bootloader_Send_ACK	1
+../Core/Src/Bootloader.c:367:13:Bootloader_Send_NACK	1
+../Core/Src/Bootloader.c:373:16:Host_Address_Verification	5
