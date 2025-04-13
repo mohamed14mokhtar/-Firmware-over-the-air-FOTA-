@@ -4,16 +4,19 @@
 
 ## 📋 Table of Contents
 
-1. [Project Title](#-project-title)
-2. [Project Overview](#-project-overview)
-3. [System Components](#-system-components)
+1. [Project Overview](#-project-overview)
+2. [System Components](#system-components)
    - [Hardware Components](#hardware-components)
    - [Software Tools](#software-tools)
    - [Communication Interfaces](#communication-interfaces)
-4. [System Workflow](#-system-workflow)
-5. [Web Server Interface](#web-server-interface)
+3. [System Workflow](#system-workflow)
+4. [Web Server Interface](#web-server-interface)
 
 ---
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/61d0638d-89ac-4667-bea5-48093a8dce58" alt="FOTA System Diagram">
+</p>
 
 ## 🧾 Project Overview
 
@@ -83,16 +86,17 @@ The Firmware Over-The-Air (FOTA) system follows these steps for a successful wir
    - When a new firmware is available, the process can be repeated at any time via the same Node-RED interface.
 
 ---
+
 <p align="center">
-![0_kAfvqtFnC41H6x2N](https://github.com/user-attachments/assets/386c0bfd-76f5-4fb2-b458-431644dfabf4)
+  <img src="https://github.com/user-attachments/assets/386c0bfd-76f5-4fb2-b458-431644dfabf4" alt="Firmware Update Process">
 </p>
----
 
 ## 🌐 Web Server Interface
 
 The Node-RED web interface facilitates seamless firmware uploads and system monitoring. Below is a screenshot of the interface:
+
 <p align="center">
-![Screenshot 2025-04-14 005625](https://github.com/user-attachments/assets/fb42e196-87d3-4db2-b36d-1756b5a9ce94)
+  <img src="https://github.com/user-attachments/assets/fb42e196-87d3-4db2-b36d-1756b5a9ce94" alt="Node-RED Web Interface">
 </p>
 
 *Figure: Node-RED Web Interface for Firmware Uploads*
