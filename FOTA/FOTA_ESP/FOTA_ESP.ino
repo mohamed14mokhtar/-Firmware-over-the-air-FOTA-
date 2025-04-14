@@ -175,6 +175,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.println("flash mass erase");
     client.publish("FOTA_RECEIVE", "flash mass erase");
     BL_mass_erase();
+  }else if(message.equals("15")){
+    Serial.println("jump to bootloader");
+    client.publish("FOTA_RECEIVE", "jump to bootloader");
+    Serial1.write(15);
   }
   
 }
@@ -221,9 +225,18 @@ void BL_memory_write(){
         if(1 == ACK_BIT){
             flashAddresss += DATA_SIZE;
             delay(20);
+        }else{
+            break ;
         }
     }
-    //Serial.println("File transfer complete!");
+    if(1 == ACK_BIT){
+        Serial.println("File transfer complete!");
+        client.publish("FOTA_RECEIVE", "File transfer complete!");
+    }else{
+        Serial.println("File transfer doesn't complete!");
+        client.publish("FOTA_RECEIVE", "File transfer doesn't complete!");
+    }
+    
     file.close();    
 }
 
@@ -235,6 +248,7 @@ uint8_t ACK_receive(){
 		if (millis() - start_time > TIME_OUT_VALUE) 
         { 
 			Serial.println("Timeout waiting for ACK packet!");
+            client.publish("FOTA_RECEIVE", "Timeout waiting for ACK packet!");
 			return 0;
 		}
 	}
@@ -249,6 +263,7 @@ uint8_t ACK_receive(){
             if (millis() - start_time > TIME_OUT_VALUE) 
             { 
                 Serial.println("Timeout waiting for Message Length!");
+                client.publish("FOTA_RECEIVE", "Timeout waiting for ACK packet!");
                 return 0;
             }
         }
@@ -257,11 +272,13 @@ uint8_t ACK_receive(){
 
     case NACK_CODE:
         Serial.println("Received NACK!");
+        client.publish("FOTA_RECEIVE", "Received NACK!");
         return 3;     // Return from the hole function
         break;
 
     default:
         Serial.println("Error in receiving ACK/NACK from BootLoader!");
+        client.publish("FOTA_RECEIVE", "Error in receiving ACK/NACK from BootLoader!");
         return 2;     // Return from the hole function
     }
     return 1;
@@ -286,8 +303,8 @@ void BL_jump_to_address(uint32_t address){
 	// Sending the entire packet over Serial2
 	Serial1.write(packet, 6);
     Serial1.flush();  // Ensures all data is sent before waiting for ACK
-
     Serial.println("Waiting for ACK...");
+
     ACK_BIT = ACK_receive();
 }
 
@@ -310,6 +327,7 @@ void BL_erase_from_sector_two(uint32_t address){
     Serial1.flush();  // Ensures all data is sent before waiting for ACK
 
     Serial.println("Waiting for ACK...");
+    client.publish("FOTA_RECEIVE", "Waiting for ACK...");
     ACK_BIT = ACK_receive();
 }
 

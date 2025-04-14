@@ -21,31 +21,31 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   8 .data         0000005c  20000000  08003e10  00005000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000278  2000005c  08003e6c  0000505c  2**2
+  9 .bss          0000026c  2000005c  08003e6c  0000505c  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  200002d4  08003e6c  000052d4  2**0
+ 10 ._user_heap_stack 00000600  200002c8  08003e6c  000052c8  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0000505c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00009c0b  00000000  00000000  0000508c  2**0
+ 12 .debug_info   00009bf1  00000000  00000000  0000508c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 0000225d  00000000  00000000  0000ec97  2**0
+ 13 .debug_abbrev 00002240  00000000  00000000  0000ec7d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000920  00000000  00000000  00010ef8  2**3
+ 14 .debug_aranges 00000918  00000000  00000000  00010ec0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 000006d3  00000000  00000000  00011818  2**0
+ 15 .debug_rnglists 000006cd  00000000  00000000  000117d8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00016a2d  00000000  00000000  00011eeb  2**0
+ 16 .debug_macro  00016a2d  00000000  00000000  00011ea5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000d9c8  00000000  00000000  00028918  2**0
+ 17 .debug_line   0000dd99  00000000  00000000  000288d2  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00086103  00000000  00000000  000362e0  2**0
+ 18 .debug_str    00086178  00000000  00000000  0003666b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000bc3e3  2**0
+ 19 .comment      00000043  00000000  00000000  000bc7e3  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000027a8  00000000  00000000  000bc428  2**2
+ 20 .debug_frame  00002788  00000000  00000000  000bc828  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000050  00000000  00000000  000bebd0  2**0
+ 21 .debug_line_str 00000050  00000000  00000000  000befb0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -439,7 +439,7 @@ BL_Status BL_UART_Fetch_Host_Command(void){
  8000598:	f06f 0220 	mvn.w	r2, #32
  800059c:	601a      	str	r2, [r3, #0]
 	memset(BL_Host_Buffer, 0, BL_HOST_BUFFER_RX_LENGTH);               // set all value at array to 0
- 800059e:	2250      	movs	r2, #80	@ 0x50
+ 800059e:	2247      	movs	r2, #71	@ 0x47
  80005a0:	2100      	movs	r1, #0
  80005a2:	4836      	ldr	r0, [pc, #216]	@ (800067c <BL_UART_Fetch_Host_Command+0x10c>)
  80005a4:	f002 fe70 	bl	8003288 <memset>
@@ -590,9 +590,9 @@ BL_Status BL_UART_Fetch_Host_Command(void){
  8000672:	46bd      	mov	sp, r7
  8000674:	bd80      	pop	{r7, pc}
  8000676:	bf00      	nop
- 8000678:	20000120 	.word	0x20000120
+ 8000678:	20000114 	.word	0x20000114
  800067c:	20000078 	.word	0x20000078
- 8000680:	200000c8 	.word	0x200000c8
+ 8000680:	200000bf 	.word	0x200000bf
  8000684:	20000079 	.word	0x20000079
  8000688:	08003ba0 	.word	0x08003ba0
  800068c:	08003bb8 	.word	0x08003bb8
@@ -648,7 +648,7 @@ void BL_Print_Message(char *format, ...){
  80006dc:	e8bd 4080 	ldmia.w	sp!, {r7, lr}
  80006e0:	b004      	add	sp, #16
  80006e2:	4770      	bx	lr
- 80006e4:	200000d8 	.word	0x200000d8
+ 80006e4:	200000cc 	.word	0x200000cc
 
 080006e8 <Bootloader_Jump_To_Address>:
 
@@ -687,7 +687,7 @@ static void Bootloader_Jump_To_Address(uint8_t *Host_Buffer) {
     if (ADDRESS_IS_VALID == Address_Verification) {
  8000712:	7efb      	ldrb	r3, [r7, #27]
  8000714:	2b01      	cmp	r3, #1
- 8000716:	d12a      	bne.n	800076e <Bootloader_Jump_To_Address+0x86>
+ 8000716:	d12b      	bne.n	8000770 <Bootloader_Jump_To_Address+0x88>
         Bootloader_Send_ACK(1);
  8000718:	2001      	movs	r0, #1
  800071a:	f000 f98b 	bl	8000a34 <Bootloader_Send_ACK>
@@ -697,68 +697,68 @@ static void Bootloader_Jump_To_Address(uint8_t *Host_Buffer) {
  800071e:	6a7b      	ldr	r3, [r7, #36]	@ 0x24
  8000720:	681b      	ldr	r3, [r3, #0]
  8000722:	617b      	str	r3, [r7, #20]
-        uint32_t APP_Reset_Hndler_Addr = *((uint32_t*)HOST_Jump_Address) | 1;     // Reset Handler with Thumb bit set
+        uint32_t APP_Reset_Hndler_Addr = *((uint32_t*)(HOST_Jump_Address + 4)) | 1;     // Reset Handler with Thumb bit set
  8000724:	6a7b      	ldr	r3, [r7, #36]	@ 0x24
- 8000726:	681b      	ldr	r3, [r3, #0]
- 8000728:	f043 0301 	orr.w	r3, r3, #1
- 800072c:	613b      	str	r3, [r7, #16]
- 800072e:	697b      	ldr	r3, [r7, #20]
- 8000730:	60bb      	str	r3, [r7, #8]
+ 8000726:	3304      	adds	r3, #4
+ 8000728:	681b      	ldr	r3, [r3, #0]
+ 800072a:	f043 0301 	orr.w	r3, r3, #1
+ 800072e:	613b      	str	r3, [r7, #16]
+ 8000730:	697b      	ldr	r3, [r7, #20]
+ 8000732:	60bb      	str	r3, [r7, #8]
   \details Assigns the given value to the Main Stack Pointer (MSP).
   \param [in]    topOfMainStack  Main Stack Pointer value to set
  */
 __STATIC_FORCEINLINE void __set_MSP(uint32_t topOfMainStack)
 {
   __ASM volatile ("MSR msp, %0" : : "r" (topOfMainStack) : );
- 8000732:	68bb      	ldr	r3, [r7, #8]
- 8000734:	f383 8808 	msr	MSP, r3
+ 8000734:	68bb      	ldr	r3, [r7, #8]
+ 8000736:	f383 8808 	msr	MSP, r3
 }
- 8000738:	bf00      	nop
+ 800073a:	bf00      	nop
 
         __set_MSP(APP_MSP_Value);  // Set MSP
 
         HAL_UART_DeInit(&huart2);
- 800073a:	480f      	ldr	r0, [pc, #60]	@ (8000778 <Bootloader_Jump_To_Address+0x90>)
- 800073c:	f002 f900 	bl	8002940 <HAL_UART_DeInit>
+ 800073c:	480e      	ldr	r0, [pc, #56]	@ (8000778 <Bootloader_Jump_To_Address+0x90>)
+ 800073e:	f002 f8ff 	bl	8002940 <HAL_UART_DeInit>
         HAL_UART_DeInit(&huart1);
- 8000740:	480e      	ldr	r0, [pc, #56]	@ (800077c <Bootloader_Jump_To_Address+0x94>)
- 8000742:	f002 f8fd 	bl	8002940 <HAL_UART_DeInit>
+ 8000742:	480e      	ldr	r0, [pc, #56]	@ (800077c <Bootloader_Jump_To_Address+0x94>)
+ 8000744:	f002 f8fc 	bl	8002940 <HAL_UART_DeInit>
         HAL_RCC_DeInit();                //very important and should delete weak function
- 8000746:	f001 ffdd 	bl	8002704 <HAL_RCC_DeInit>
+ 8000748:	f001 ffdc 	bl	8002704 <HAL_RCC_DeInit>
         HAL_GPIO_DeInit(GPIOC, GPIO_PIN_13);
- 800074a:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
- 800074e:	480c      	ldr	r0, [pc, #48]	@ (8000780 <Bootloader_Jump_To_Address+0x98>)
- 8000750:	f001 fa82 	bl	8001c58 <HAL_GPIO_DeInit>
+ 800074c:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
+ 8000750:	480b      	ldr	r0, [pc, #44]	@ (8000780 <Bootloader_Jump_To_Address+0x98>)
+ 8000752:	f001 fa81 	bl	8001c58 <HAL_GPIO_DeInit>
 
         SysTick->CTRL = 0;
- 8000754:	4b0b      	ldr	r3, [pc, #44]	@ (8000784 <Bootloader_Jump_To_Address+0x9c>)
- 8000756:	2200      	movs	r2, #0
- 8000758:	601a      	str	r2, [r3, #0]
+ 8000756:	4b0b      	ldr	r3, [pc, #44]	@ (8000784 <Bootloader_Jump_To_Address+0x9c>)
+ 8000758:	2200      	movs	r2, #0
+ 800075a:	601a      	str	r2, [r3, #0]
         SysTick->LOAD = 0;
- 800075a:	4b0a      	ldr	r3, [pc, #40]	@ (8000784 <Bootloader_Jump_To_Address+0x9c>)
- 800075c:	2200      	movs	r2, #0
- 800075e:	605a      	str	r2, [r3, #4]
+ 800075c:	4b09      	ldr	r3, [pc, #36]	@ (8000784 <Bootloader_Jump_To_Address+0x9c>)
+ 800075e:	2200      	movs	r2, #0
+ 8000760:	605a      	str	r2, [r3, #4]
         SysTick->VAL  = 0;
- 8000760:	4b08      	ldr	r3, [pc, #32]	@ (8000784 <Bootloader_Jump_To_Address+0x9c>)
- 8000762:	2200      	movs	r2, #0
- 8000764:	609a      	str	r2, [r3, #8]
+ 8000762:	4b08      	ldr	r3, [pc, #32]	@ (8000784 <Bootloader_Jump_To_Address+0x9c>)
+ 8000764:	2200      	movs	r2, #0
+ 8000766:	609a      	str	r2, [r3, #8]
 
         // Jump to application
         void (*AppResetHandler)(void) = (void (*)(void)) APP_Reset_Hndler_Addr;
- 8000766:	693b      	ldr	r3, [r7, #16]
- 8000768:	60fb      	str	r3, [r7, #12]
+ 8000768:	693b      	ldr	r3, [r7, #16]
+ 800076a:	60fb      	str	r3, [r7, #12]
         AppResetHandler();
- 800076a:	68fb      	ldr	r3, [r7, #12]
- 800076c:	4798      	blx	r3
+ 800076c:	68fb      	ldr	r3, [r7, #12]
+ 800076e:	4798      	blx	r3
     }
 }
- 800076e:	bf00      	nop
- 8000770:	3728      	adds	r7, #40	@ 0x28
- 8000772:	46bd      	mov	sp, r7
- 8000774:	bd80      	pop	{r7, pc}
- 8000776:	bf00      	nop
- 8000778:	20000120 	.word	0x20000120
- 800077c:	200000d8 	.word	0x200000d8
+ 8000770:	bf00      	nop
+ 8000772:	3728      	adds	r7, #40	@ 0x28
+ 8000774:	46bd      	mov	sp, r7
+ 8000776:	bd80      	pop	{r7, pc}
+ 8000778:	20000114 	.word	0x20000114
+ 800077c:	200000cc 	.word	0x200000cc
  8000780:	40020800 	.word	0x40020800
  8000784:	e000e010 	.word	0xe000e010
 
@@ -1278,7 +1278,7 @@ static void Bootloader_Send_ACK(uint8_t Replay_Len){
  8000a5e:	46bd      	mov	sp, r7
  8000a60:	bd80      	pop	{r7, pc}
  8000a62:	bf00      	nop
- 8000a64:	20000120 	.word	0x20000120
+ 8000a64:	20000114 	.word	0x20000114
 
 08000a68 <Host_Address_Verification>:
 	uint8_t Ack_Value = CBL_SEND_NACK;
@@ -1371,7 +1371,7 @@ void MX_CRC_Init(void)
  8000ad2:	bf00      	nop
  8000ad4:	bd80      	pop	{r7, pc}
  8000ad6:	bf00      	nop
- 8000ad8:	200000cc 	.word	0x200000cc
+ 8000ad8:	200000c0 	.word	0x200000c0
  8000adc:	40023000 	.word	0x40023000
 
 08000ae0 <HAL_CRC_MspInit>:
@@ -2041,8 +2041,8 @@ void *_sbrk(ptrdiff_t incr)
  8000e0e:	bd80      	pop	{r7, pc}
  8000e10:	20010000 	.word	0x20010000
  8000e14:	00000400 	.word	0x00000400
- 8000e18:	200000d4 	.word	0x200000d4
- 8000e1c:	200002d8 	.word	0x200002d8
+ 8000e18:	200000c8 	.word	0x200000c8
+ 8000e1c:	200002c8 	.word	0x200002c8
 
 08000e20 <SystemInit>:
   *         configuration.
@@ -2138,7 +2138,7 @@ void MX_USART1_UART_Init(void)
  8000e8a:	bf00      	nop
  8000e8c:	bd80      	pop	{r7, pc}
  8000e8e:	bf00      	nop
- 8000e90:	200000d8 	.word	0x200000d8
+ 8000e90:	200000cc 	.word	0x200000cc
  8000e94:	40011000 	.word	0x40011000
 
 08000e98 <MX_USART2_UART_Init>:
@@ -2203,7 +2203,7 @@ void MX_USART2_UART_Init(void)
  8000ede:	bf00      	nop
  8000ee0:	bd80      	pop	{r7, pc}
  8000ee2:	bf00      	nop
- 8000ee4:	20000120 	.word	0x20000120
+ 8000ee4:	20000114 	.word	0x20000114
  8000ee8:	40004400 	.word	0x40004400
 
 08000eec <HAL_UART_MspInit>:
@@ -2512,7 +2512,7 @@ LoopFillZerobss:
   ldr r2, =_sbss
  800108c:	2000005c 	.word	0x2000005c
   ldr r4, =_ebss
- 8001090:	200002d4 	.word	0x200002d4
+ 8001090:	200002c8 	.word	0x200002c8
 
 08001094 <ADC_IRQHandler>:
  * @retval None       
@@ -2533,7 +2533,7 @@ HAL_StatusTypeDef HAL_Init(void)
 {
  8001098:	b580      	push	{r7, lr}
  800109a:	af00      	add	r7, sp, #0
-  /* Configure Flash prefetch, Instruction cache, Data cache */
+  /* Configure Flash prefetch, Instruction cache, Data cache */ 
 #if (INSTRUCTION_CACHE_ENABLE != 0U)
   __HAL_FLASH_INSTRUCTION_CACHE_ENABLE();
  800109c:	4b0e      	ldr	r3, [pc, #56]	@ (80010d8 <HAL_Init+0x40>)
@@ -2651,7 +2651,7 @@ __weak HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
  8001138:	20000004 	.word	0x20000004
 
 0800113c <HAL_IncTick>:
- * @note This function is declared as __weak to be overwritten in case of other
+ * @note This function is declared as __weak to be overwritten in case of other 
   *      implementations in user file.
   * @retval None
   */
@@ -2659,7 +2659,7 @@ __weak void HAL_IncTick(void)
 {
  800113c:	b480      	push	{r7}
  800113e:	af00      	add	r7, sp, #0
-    uwTick += uwTickFreq;
+  uwTick += uwTickFreq;
  8001140:	4b06      	ldr	r3, [pc, #24]	@ (800115c <HAL_IncTick+0x20>)
  8001142:	781b      	ldrb	r3, [r3, #0]
  8001144:	461a      	mov	r2, r3
@@ -2675,27 +2675,27 @@ __weak void HAL_IncTick(void)
  8001158:	4770      	bx	lr
  800115a:	bf00      	nop
  800115c:	20000008 	.word	0x20000008
- 8001160:	20000168 	.word	0x20000168
+ 8001160:	2000015c 	.word	0x2000015c
 
 08001164 <HAL_GetTick>:
-  * @note This function is declared as __weak to be overwritten in case of other
+  * @note This function is declared as __weak to be overwritten in case of other 
   *       implementations in user file.
   * @retval tick value
   */
 __weak uint32_t HAL_GetTick(void)
- {
+{
  8001164:	b480      	push	{r7}
  8001166:	af00      	add	r7, sp, #0
   return uwTick;
  8001168:	4b03      	ldr	r3, [pc, #12]	@ (8001178 <HAL_GetTick+0x14>)
  800116a:	681b      	ldr	r3, [r3, #0]
- }
+}
  800116c:	4618      	mov	r0, r3
  800116e:	46bd      	mov	sp, r7
  8001170:	f85d 7b04 	ldr.w	r7, [sp], #4
  8001174:	4770      	bx	lr
  8001176:	bf00      	nop
- 8001178:	20000168 	.word	0x20000168
+ 8001178:	2000015c 	.word	0x2000015c
 
 0800117c <__NVIC_SetPriorityGrouping>:
            In case of a conflict between priority grouping and available
@@ -3207,7 +3207,7 @@ HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint
  800141a:	46bd      	mov	sp, r7
  800141c:	bd80      	pop	{r7, pc}
  800141e:	bf00      	nop
- 8001420:	2000016c 	.word	0x2000016c
+ 8001420:	20000160 	.word	0x20000160
  8001424:	40023c00 	.word	0x40023c00
 
 08001428 <HAL_FLASH_Unlock>:
@@ -3395,7 +3395,7 @@ HAL_StatusTypeDef FLASH_WaitForLastOperation(uint32_t Timeout)
  80014fe:	3710      	adds	r7, #16
  8001500:	46bd      	mov	sp, r7
  8001502:	bd80      	pop	{r7, pc}
- 8001504:	2000016c 	.word	0x2000016c
+ 8001504:	20000160 	.word	0x20000160
  8001508:	40023c00 	.word	0x40023c00
 
 0800150c <FLASH_Program_DoubleWord>:
@@ -3749,7 +3749,7 @@ static void FLASH_SetErrorCode(void)
  80016fe:	f85d 7b04 	ldr.w	r7, [sp], #4
  8001702:	4770      	bx	lr
  8001704:	40023c00 	.word	0x40023c00
- 8001708:	2000016c 	.word	0x2000016c
+ 8001708:	20000160 	.word	0x20000160
 
 0800170c <HAL_FLASHEx_Erase>:
   *         (0xFFFFFFFFU means that all the sectors have been correctly erased)
@@ -3914,7 +3914,7 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase(FLASH_EraseInitTypeDef *pEraseInit, uint32_t
  80017de:	3710      	adds	r7, #16
  80017e0:	46bd      	mov	sp, r7
  80017e2:	bd80      	pop	{r7, pc}
- 80017e4:	2000016c 	.word	0x2000016c
+ 80017e4:	20000160 	.word	0x20000160
  80017e8:	40023c00 	.word	0x40023c00
 
 080017ec <FLASH_MassErase>:
@@ -8312,7 +8312,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  800337a:	e7ca      	b.n	8003312 <_free_r+0x22>
  800337c:	bd38      	pop	{r3, r4, r5, pc}
  800337e:	bf00      	nop
- 8003380:	200002d0 	.word	0x200002d0
+ 8003380:	200002c4 	.word	0x200002c4
 
 08003384 <sbrk_aligned>:
  8003384:	b570      	push	{r4, r5, r6, lr}
@@ -8342,7 +8342,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  80033be:	d1f2      	bne.n	80033a6 <sbrk_aligned+0x22>
  80033c0:	e7ef      	b.n	80033a2 <sbrk_aligned+0x1e>
  80033c2:	bf00      	nop
- 80033c4:	200002cc 	.word	0x200002cc
+ 80033c4:	200002c0 	.word	0x200002c0
 
 080033c8 <_malloc_r>:
  80033c8:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -8452,19 +8452,19 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  80034be:	6005      	str	r5, [r0, #0]
  80034c0:	e7d6      	b.n	8003470 <_malloc_r+0xa8>
  80034c2:	bf00      	nop
- 80034c4:	200002d0 	.word	0x200002d0
+ 80034c4:	200002c4 	.word	0x200002c4
 
 080034c8 <__malloc_lock>:
  80034c8:	4801      	ldr	r0, [pc, #4]	@ (80034d0 <__malloc_lock+0x8>)
  80034ca:	f7ff bf0f 	b.w	80032ec <__retarget_lock_acquire_recursive>
  80034ce:	bf00      	nop
- 80034d0:	200002c8 	.word	0x200002c8
+ 80034d0:	200002bc 	.word	0x200002bc
 
 080034d4 <__malloc_unlock>:
  80034d4:	4801      	ldr	r0, [pc, #4]	@ (80034dc <__malloc_unlock+0x8>)
  80034d6:	f7ff bf0a 	b.w	80032ee <__retarget_lock_release_recursive>
  80034da:	bf00      	nop
- 80034dc:	200002c8 	.word	0x200002c8
+ 80034dc:	200002bc 	.word	0x200002bc
 
 080034e0 <__ssputs_r>:
  80034e0:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -9116,7 +9116,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  8003af6:	b103      	cbz	r3, 8003afa <_sbrk_r+0x1a>
  8003af8:	6023      	str	r3, [r4, #0]
  8003afa:	bd38      	pop	{r3, r4, r5, pc}
- 8003afc:	200002c4 	.word	0x200002c4
+ 8003afc:	200002b8 	.word	0x200002b8
 
 08003b00 <memcpy>:
  8003b00:	440a      	add	r2, r1

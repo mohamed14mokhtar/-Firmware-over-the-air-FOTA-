@@ -124,7 +124,7 @@ static void Bootloader_Jump_To_Address(uint8_t *Host_Buffer) {
 
         // Extract stack pointer and reset handler from the vector table
         uint32_t APP_MSP_Value = *((uint32_t*)HOST_Jump_Address);         // MSP
-        uint32_t APP_Reset_Hndler_Addr = *((uint32_t*)HOST_Jump_Address) | 1;     // Reset Handler with Thumb bit set
+        uint32_t APP_Reset_Hndler_Addr = *((uint32_t*)(HOST_Jump_Address + 4)) | 1;     // Reset Handler with Thumb bit set
 
         __set_MSP(APP_MSP_Value);  // Set MSP
 
