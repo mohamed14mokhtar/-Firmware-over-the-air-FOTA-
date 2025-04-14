@@ -39,10 +39,6 @@ This project is ideal for embedded systems used in remote locations or enclosed 
 - **STM32F401RCT6 (ARM Cortex-M4)**: Main microcontroller running the bootloader and the user application.
 - **ESP-01 (ESP8266 Wi-Fi Module)**: Provides wireless communication for firmware transfer.
 - **LEDs**: Can be used to display firmware update status or debug messages.
-- 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/5cbf7a74-0982-4115-bbe0-e98ab620abba">
-</p>
 ---
 
 ### 💻 Software Tools
