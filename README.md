@@ -39,7 +39,10 @@ This project is ideal for embedded systems used in remote locations or enclosed 
 - **STM32F401RCT6 (ARM Cortex-M4)**: Main microcontroller running the bootloader and the user application.
 - **ESP-01 (ESP8266 Wi-Fi Module)**: Provides wireless communication for firmware transfer.
 - **LEDs**: Can be used to display firmware update status or debug messages.
-
+- 
+<p align="center">
+  <img src="[https://github.com/user-attachments/assets/89f2f2f1-b8d0-4ed4-9094-fe42ef050f8e" alt="Node-RED Web Interface](https://github.com/user-attachments/assets/bef1a0cc-0cb5-4807-b833-240c6629fee5)">
+</p>
 ---
 
 ### 💻 Software Tools
@@ -96,9 +99,10 @@ The Firmware Over-The-Air (FOTA) system follows these steps for a successful wir
 The Node-RED web interface facilitates seamless firmware uploads and system monitoring. Below is a screenshot of the interface:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fb42e196-87d3-4db2-b36d-1756b5a9ce94" alt="Node-RED Web Interface">
+  <img src="https://github.com/user-attachments/assets/89f2f2f1-b8d0-4ed4-9094-fe42ef050f8e" alt="Node-RED Web Interface">
 </p>
 
 *Figure: Node-RED Web Interface for Firmware Uploads*
 
 ---
+
