@@ -41,7 +41,7 @@ This project is ideal for embedded systems used in remote locations or enclosed 
 - **LEDs**: Can be used to display firmware update status or debug messages.
 - 
 <p align="center">
-  <img src="[https://github.com/user-attachments/assets/89f2f2f1-b8d0-4ed4-9094-fe42ef050f8e" alt="Node-RED Web Interface](https://github.com/user-attachments/assets/bef1a0cc-0cb5-4807-b833-240c6629fee5)">
+  <img src="https://github.com/user-attachments/assets/89f2f2f1-b8d0-4ed4-9094-fe42ef050f8e">
 </p>
 ---
 
@@ -105,4 +105,5 @@ The Node-RED web interface facilitates seamless firmware uploads and system moni
 *Figure: Node-RED Web Interface for Firmware Uploads*
 
 ---
+
 
